@@ -1,0 +1,17 @@
+[client]
+
+[MYSQLD]
+# lower_case_table_names = 2
+
+# 设置同一局域网内server-id必须具有唯一性
+server-id=2
+
+# 开启二进制日志功能, 并设置日志文件名, 文件名可随意起名
+# log-bin=mysql-slave-bin
+
+# 指定中继日志
+relay-log=slave-relay-bin
+
+# 默认使用 “mysql_native_password” 插件认证
+default_authentication_plugin=mysql_native_password
+

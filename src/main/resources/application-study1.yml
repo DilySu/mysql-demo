@@ -1,0 +1,75 @@
+spring:
+#  main:
+#    allow-bean-definition-overriding: true
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    datasource:
+      names: m1,m2
+      #      names: m1
+
+      m1: # 数据库 m1, 包含连接池、驱动、地址、用户名、密码
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/sharding_sphere1?serverTimezone=UTC
+        username: root
+        password: 123456
+
+      m2: # 数据库 m2, 包含连接池、驱动、地址、用户名、密码
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/sharding_sphere2?serverTimezone=UTC
+        username: root
+        password: 123456
+
+    # 指定数据库分布情况，数据库里面表分布情况
+    sharding:
+      broadcast-tables: dict
+      tables:
+        dict:
+          key-generator: # 表中主键生成策略
+            column: id           # 分库依赖的列
+            type: UUID       # 雪花算法
+#            type: SNOWFLAKE       # 雪花算法
+
+        user:
+          actual-data-nodes: m$->{1..2}.user_$->{1..2}
+          key-generator: # user 表中主键生成策略
+            column: id           # 分库依赖的列
+            type: SNOWFLAKE       # 雪花算法
+#
+#          table-strategy: # 分片策略
+#            inline:  # 不支持范围查询
+#               sharding-column: id
+#               algorithm-expression: user_$->{id%2+1}
+#            standard: # 不支持多字段分表, 对于复杂查询可能浪费性能
+#              sharding-column: id
+#              range-algorithm-class-name: com.study.mysql.algorithm.RangeTableSharding
+#              precise-algorithm-class-name: com.study.mysql.algorithm.PreciseTableSharding
+#            complex:
+#              sharding-columns: id,cid
+#              algorithm-class-name: com.study.mysql.algorithm.ComplexTableSharding
+#            hint: # 不支持多层子查询, 不支持union,
+#              algorithm-class-name: com.study.mysql.algorithm.HintTableSharding
+#
+#          database-strategy:
+#            inline: # 不支持范围查询
+#              sharding-column: id
+#              algorithm-expression: m$->{id%2+1}
+#            standard:
+#              sharding-column: id
+#              range-algorithm-class-name: com.study.mysql.algorithm.RangeDSSharding
+#              precise-algorithm-class-name: com.study.mysql.algorithm.PreciseDSSharding
+#            complex:
+#              sharding-columns: id,cid
+#              algorithm-class-name: com.study.mysql.algorithm.ComplexDSSharding
+#            hint: # 不支持多层子查询, 不支持union,
+#              algorithm-class-name: com.study.mysql.algorithm.HintDSSharding
+
+#      default-database-strategy:
+#        hint:
+#          algorithm-class-name: com.study.mysql.algorithm.HintDSSharding
+#      default-table-strategy:
+#        hint:
+#          algorithm-class-name: com.study.mysql.algorithm.HintTableSharding

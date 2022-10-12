@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  master:
+    image: mysql:latest
+    container_name: mysql-master
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_TCP_PORT=3336
+    ports:
+      - "3336:3336"
+    networks:
+      - backend
+    volumes:
+      - ./mysql-master.cnf:/etc/mysql/my.cnf
+      - ./data/master:/var/lib/mysql
+
+  slave01:
+    image: mysql:latest
+    container_name: mysql-slave01
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_TCP_PORT=3337
+    ports:
+      - "3337:3337"
+    networks:
+      - backend
+    volumes:
+      - ./mysql-slave.cnf:/etc/mysql/my.cnf
+      - ./data/slave01:/var/lib/mysql
+
+networks:
+  backend:
+    name: master_slave

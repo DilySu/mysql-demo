@@ -1,0 +1,29 @@
+[client]
+
+[mysqld]
+# lower_case_table_names = 2
+
+# 设置同一局域网内server-id必须具有唯一性
+server-id = 1
+
+# 指定复制哪些数据库
+binlog-do-db = test
+
+# 指定不复制哪些数据库
+binlog-ignore-db = mysql
+binlog-ignore-db = information_schema
+binlog-ignore-db = performance_schema
+binlog-ignore-db = sys
+
+# 开启二进制日志功能, 并设置日志文件名, 文件名可随意起名
+log-bin = mysql_bin
+
+# 设置 binlog 日志格式, 其值可谓 row（默认）、statement、mixed
+binlog_format = statement
+
+# 设置每隔多少次事务提交操作才会将这些操作写入二进制日志文件
+sync_binlog = 1
+
+# 默认使用 “mysql_native_password” 插件认证
+default_authentication_plugin = mysql_native_password
+

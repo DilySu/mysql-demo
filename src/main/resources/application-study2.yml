@@ -1,0 +1,50 @@
+spring:
+  #  main:
+  #    allow-bean-definition-overriding: true
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    datasource:
+      names: m1
+
+      m1: # 数据库 m1, 包含连接池、驱动、地址、用户名、密码
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/sharding_sphere1?serverTimezone=UTC
+        username: root
+        password: 123456
+
+    #      m2: # 数据库 m2, 包含连接池、驱动、地址、用户名、密码
+    #        type: com.alibaba.druid.pool.DruidDataSource
+    #        driver-class-name: com.mysql.cj.jdbc.Driver
+    #        url: jdbc:mysql://localhost:3306/sharding_sphere2?serverTimezone=UTC
+    #        username: root
+    #        password: 123456
+
+    # 指定数据库分布情况，数据库里面表分布情况
+    sharding:
+      #      broadcast-tables: dict
+      binding-tables:
+        0: user,dict
+      tables:
+        dict:
+          actual-data-nodes: m1.dict_$->{1..2}
+          key-generator: # 表中主键生成策略
+            column: id           # 分库依赖的列
+            type: UUID
+          table-strategy: # 分片策略
+            inline: # 不支持范围查询
+              sharding-column: status
+              algorithm-expression: dict_$->{status.toInteger()%2+1}
+
+        user:
+          actual-data-nodes: m1.user_$->{1..2}
+          key-generator: # user 表中主键生成策略
+            column: id           # 分库依赖的列
+            type: SNOWFLAKE       # 雪花算法
+          table-strategy: # 分片策略
+            inline: # 不支持范围查询
+              sharding-column: status
+              algorithm-expression: user_$->{status.toInteger()%2+1}
+
