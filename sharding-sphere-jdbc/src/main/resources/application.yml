@@ -1,0 +1,61 @@
+server:
+  port: 8888
+
+spring:
+  sharding-sphere:
+    props:
+      sql:
+        show: true
+    datasource:
+      names: master,slave-0
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3336/test?serverTimezone=UTC
+        username: root
+        password: 123456
+      slave-0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3337/test?serverTimezone=UTC
+        username: root
+        password: 123456
+    rules:
+      readwrite-splitting:
+        data-sources:
+          ds:
+            load-balancer-name: round-robin
+            static-strategy:
+              # 注意，如果接口有事务，读写分离不生效，默认全部使用主库，为了保证数据一致性
+              write-data-source-name: master
+              read-data-source-names:
+                - slave0
+        load-balancers:
+          round-robin:
+            type: RANDOM #一共三种一种是 RANDOM（随机），一种是 ROUND_ROBIN（轮询），一种是 WEIGHT（权重）
+      sharding:
+        tables:
+          user: # 拥有几个分片表0-3
+            actual-data-nodes: ds.user_$->{0..1}
+            table-strategy:
+              standard:
+                sharding-column: id
+                sharding-algorithm-name: table-inline # 配置算法
+        default-database-strategy:
+          standard:
+            sharding-column: id
+            sharding-algorithm-name: database-inline
+        sharding-algorithms:
+          table-inline:
+            type: HASH_MOD
+            props:
+              sharding-count: 2
+          database-inline:
+            type: HASH_MOD
+            props:
+              sharding-count: 3
+
+
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
