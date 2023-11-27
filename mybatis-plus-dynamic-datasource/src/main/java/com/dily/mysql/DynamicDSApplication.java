@@ -12,8 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Remark:
  */
 @SpringBootApplication
-public class MybatisPlusApplication {
+public class DynamicDSApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MybatisPlusApplication.class,args);
+        SpringApplication.run(DynamicDSApplication.class,args);
     }
 }
