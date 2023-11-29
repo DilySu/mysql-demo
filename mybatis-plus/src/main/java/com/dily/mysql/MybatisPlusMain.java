@@ -1,18 +1,19 @@
 package com.dily.mysql;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * ${NAME}
- * Date: 2023-11-27 星期一
- * Time: 9:01
+ * Date: 2023-11-29 星期三
+ * Time: 10:12
  * Author: Dily_Su
  * Remark:
  */
 @SpringBootApplication
-public class MateShardingApplication {
+public class MybatisPlusMain {
     public static void main(String[] args) {
-        SpringApplication.run(MateShardingApplication.class, args);
+        SpringApplication.run(MybatisPlusMain.class, args);
     }
 }

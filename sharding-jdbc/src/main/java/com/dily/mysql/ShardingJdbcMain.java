@@ -6,14 +6,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * ${NAME}
- * Date: 2023-11-22 星期三
- * Time: 16:36
+ * Date: 2023-11-23 星期四
+ * Time: 9:27
  * Author: Dily_Su
  * Remark:
  */
 @SpringBootApplication
-public class DynamicDSApplication {
+public class ShardingJdbcMain {
     public static void main(String[] args) {
-        SpringApplication.run(DynamicDSApplication.class,args);
+        SpringApplication.run(ShardingJdbcMain.class,args);
     }
 }
