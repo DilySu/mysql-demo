@@ -1,8 +1,8 @@
 [TOC]
 ## 一、mybatis-plus
 > ### mybatis-plus 内部 demo
-> - 枚举
-> - 自动填充
+> - 枚举： Student 的 grade 属性
+> - 自动填充：BaseEntity
 > - 分页
 ## 二、mybatis-plus-dynamic-datasource
 > ### MyBatis-Plus 开发参与者 开发的开源项目，核心依赖如下
@@ -19,8 +19,11 @@
 > - sharding-jdbc-spring-boot-starter：最新版本到 4.x.x
 ## 六、jpa
 > ### jpa 内部 demo
-> - 枚举
-> - 自动填充
+> - 枚举: Student 的 grade 属性
+> - 自动填充：BaseEntity
 > - 分页
 > - 表关联
+>   - 多对多： User & Role
+>   - 一对一： User & UserInfo
+>   - 一对多 & 多对一: Student <=> Group 
 > - 动态查询

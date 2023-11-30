@@ -10,7 +10,7 @@
         <relativePath />
     </parent>
 
-    <groupId>com.dily.mysql</groupId>
+    <groupId>com.dily</groupId>
     <artifactId>mybatis-plus</artifactId>
 
     <properties>

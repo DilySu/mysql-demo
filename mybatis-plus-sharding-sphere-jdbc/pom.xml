@@ -10,8 +10,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.dily.mysql</groupId>
-    <artifactId>sharding-sphere-jdbc</artifactId>
+    <groupId>com.dily.mysql.TableAssociation</groupId>
+    <artifactId>mybatis-plus-sharding-sphere-jdbc</artifactId>
 
     <dependencies>
         <dependency>

@@ -10,8 +10,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.dily.mysql</groupId>
-    <artifactId>sharding-jdbc</artifactId>
+    <groupId>com.dily.mysql.TableAssociation</groupId>
+    <artifactId>mybatis-plus-sharding-jdbc</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

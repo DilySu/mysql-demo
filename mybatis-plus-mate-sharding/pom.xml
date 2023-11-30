@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.dily.mysql</groupId>
+    <groupId>com.dily.mysql.TableAssociation</groupId>
     <artifactId>mybatis-plus-mate-sharding</artifactId>
 
     <properties>

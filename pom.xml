@@ -10,8 +10,8 @@
 
     <modules>
         <module>mybatis-plus-dynamic-datasource</module>
-        <module>sharding-sphere-jdbc</module>
-        <module>sharding-jdbc</module>
+        <module>mybatis-plus-sharding-sphere-jdbc</module>
+        <module>mybatis-plus-sharding-jdbc</module>
         <module>mybatis-plus-mate-sharding</module>
         <module>mybatis-plus</module>
         <module>jpa</module>
