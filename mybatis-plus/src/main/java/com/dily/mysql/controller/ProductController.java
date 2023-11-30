@@ -1,10 +1,12 @@
 package com.dily.mysql.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dily.mysql.entity.Product;
-import com.dily.mysql.entity.Student;
 import com.dily.mysql.repository.ProductRepo;
-import com.dily.mysql.repository.StudentRepo;
+import com.dily.mysql.service.ProductService;
+import com.dily.mysql.vo.MybatisPageImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +27,24 @@ public class ProductController {
 
     @Autowired
     private ProductRepo productRepo;
+    @Autowired
+    private ProductService productService;
+
     @GetMapping("add")
-    public void add (){
+    public void add() {
         productRepo.insert(new Product());
     }
 
     @GetMapping("list")
-    public List<Product> list(){
+    public List<Product> list() {
         return productRepo.selectList(Wrappers.emptyWrapper());
+    }
+
+    @GetMapping("page")
+    public MybatisPageImpl<Product> page() {
+        Page<Product> productPage = new Page<>(1, 2);
+        IPage<Product> page = productRepo.selectPage(productPage, null);
+//        IPage<Product> page = productService.page(productPage, null);
+        return new MybatisPageImpl<>(page);
     }
 }

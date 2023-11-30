@@ -1,10 +1,11 @@
 package com.dily.mysql.controller;
 
 import com.dily.mysql.entity.Product;
-import com.dily.mysql.entity.Student;
 import com.dily.mysql.repository.ProductRepo;
-import com.dily.mysql.repository.StudentRepo;
+import com.dily.mysql.vo.JpaPageImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,5 +33,12 @@ public class ProductController {
     @GetMapping("list")
     public List<Product> list(){
         return productRepo.findAll();
+    }
+
+    @GetMapping("page")
+    public  JpaPageImpl<Product> page (){
+        PageRequest pageRequest = PageRequest.of(0,2);
+        Page<Product> all = productRepo.findAll(pageRequest);
+        return new JpaPageImpl<>(all);
     }
 }
