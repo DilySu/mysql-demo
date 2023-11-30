@@ -20,7 +20,7 @@ import java.util.Date;
  * Date: 2023-11-29 星期三
  * Time: 10:54
  * Author: Dily_Su
- * Remark:
+ * Remark: 自动填充抽象类
  */
 @Data
 @MappedSuperclass
