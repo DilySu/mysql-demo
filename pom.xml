@@ -15,5 +15,6 @@
         <module>mybatis-plus-mate-sharding</module>
         <module>mybatis-plus</module>
         <module>jpa</module>
+        <module>mybatis-flex</module>
     </modules>
 </project>
