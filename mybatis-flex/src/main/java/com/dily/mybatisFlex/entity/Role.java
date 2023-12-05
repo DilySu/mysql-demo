@@ -2,6 +2,7 @@ package com.dily.mybatisFlex.entity;
 
 import com.mybatisflex.annotation.Id;
 import com.mybatisflex.annotation.KeyType;
+import com.mybatisflex.annotation.RelationManyToMany;
 import com.mybatisflex.annotation.Table;
 import lombok.Data;
 
@@ -22,14 +23,9 @@ public class Role {
 
     private String name;
 
-//    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
-//    private List<User> userList;
+    @RelationManyToMany(joinTable = "t_user_role",
+            joinSelfColumn = "role_id",
+            joinTargetColumn = "user_id")
+    private List<User> userList;
 
-//    @Override
-//    public String toString() {
-//        return "Role{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                '}';
-//    }
 }

@@ -2,7 +2,9 @@ package com.dily.mybatisFlex.entity;
 
 import com.mybatisflex.annotation.Id;
 import com.mybatisflex.annotation.KeyType;
+import com.mybatisflex.annotation.RelationOneToMany;
 import com.mybatisflex.annotation.Table;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
@@ -23,8 +25,6 @@ public class Group {
     private String name;
 
     // 单向关联
-//    @OneToMany(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "group_id")
-//    @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
+    @RelationOneToMany(selfField = "id", targetField = "groupId")
     List<Student> studentList;
 }

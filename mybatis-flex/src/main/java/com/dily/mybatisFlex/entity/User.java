@@ -1,9 +1,9 @@
 package com.dily.mybatisFlex.entity;
 
-import com.mybatisflex.annotation.Id;
-import com.mybatisflex.annotation.KeyType;
-import com.mybatisflex.annotation.Table;
+import com.mybatisflex.annotation.*;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * User
@@ -21,20 +21,12 @@ public class User {
     private String name;
     private boolean deleted;
 
-//    @OneToOne
-//    @JoinColumn(name = "user_info_id",referencedColumnName = "id") // referencedColumnName 可省略，默认使用主键
-//    private UserInfo userInfo;
-//
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(name = "t_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-//    private List<Role> roles;
+    @RelationOneToOne(selfField = "id", targetField = "userId") // selfField 为主键可省略
+    private UserInfo userInfo;
 
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", deleted=" + deleted +
-//                '}';
-//    }
+    @RelationManyToMany(joinTable = "t_user_role",
+            selfField = "id", joinSelfColumn = "user_id",
+            targetField = "id", joinTargetColumn = "role_id")
+    private List<Role> roles;
+
 }

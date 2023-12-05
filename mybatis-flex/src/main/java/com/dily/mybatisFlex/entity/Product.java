@@ -2,9 +2,11 @@ package com.dily.mybatisFlex.entity;
 
 import com.dily.mybatisFlex.enums.GradeEnum;
 import com.dily.mybatisFlex.listener.AutoFillListener;
+import com.mybatisflex.annotation.ColumnMask;
 import com.mybatisflex.annotation.Id;
 import com.mybatisflex.annotation.KeyType;
 import com.mybatisflex.annotation.Table;
+import com.mybatisflex.core.mask.MaskManager;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

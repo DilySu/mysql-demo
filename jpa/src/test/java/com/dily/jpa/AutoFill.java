@@ -2,8 +2,6 @@ package com.dily.jpa;
 
 import com.dily.jpa.entity.Product;
 import com.dily.jpa.repository.ProductRepo;
-import com.dily.mysql.entity.*;
-import com.dily.mysql.repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

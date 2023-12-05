@@ -2,6 +2,7 @@ package com.dily.mybatisFlex.entity;
 
 import com.mybatisflex.annotation.Id;
 import com.mybatisflex.annotation.KeyType;
+import com.mybatisflex.annotation.RelationOneToOne;
 import com.mybatisflex.annotation.Table;
 import lombok.Data;
 
@@ -22,16 +23,8 @@ public class UserInfo {
 
     private String position;
 
-//    @OneToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @RelationOneToOne(selfField = "userId", targetField = "id")
+    private User user;
+    private Integer userId;
 
-//    @Override
-//    public String toString() {
-//        return "UserInfo{" +
-//                "id=" + id +
-//                ", organization='" + organization + '\'' +
-//                ", position='" + position + '\'' +
-//                '}';
-//    }
 }

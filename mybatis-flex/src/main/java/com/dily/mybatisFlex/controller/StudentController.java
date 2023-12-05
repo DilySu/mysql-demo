@@ -5,6 +5,7 @@ import com.dily.mybatisFlex.enums.GradeEnum;
 import com.dily.mybatisFlex.mapper.StudentMapper;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,8 +35,8 @@ public class StudentController {
     public List<Student> list (){
         return studentRepo.selectAll();
     }
-    @GetMapping("delete")
-    public Integer delete(){
-        return studentRepo.deleteById(28);
+    @GetMapping("delete/{id}")
+    public Integer delete(@PathVariable Integer id){
+        return studentRepo.deleteById(id);
     }
 }
