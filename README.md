@@ -27,3 +27,11 @@
 >   - 一对一： User & UserInfo
 >   - 一对多 & 多对一: Student <=> Group 
 > - 动态查询
+## 七、mybatis-flex
+> - 枚举： Student 的 grade 属性
+> - 自动填充：BaseEntity
+> - 表关联
+>   - 多对多： User & Role
+>   - 一对一： User & UserInfo
+>   - 一对多 & 多对一: Student <=> Group
+> - 动态查询
