@@ -4,6 +4,8 @@ import com.dily.jpa.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * StudentRepo
  * Date: 2023-11-29 星期三
@@ -13,4 +15,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface StudentRepo extends JpaRepository<Student, Integer> {
+
+    List<Student> findAllByAgeAndGroupIdIn(Integer age, List<Integer> groupIds);
 }

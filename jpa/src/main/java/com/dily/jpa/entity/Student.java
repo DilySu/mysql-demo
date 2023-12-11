@@ -27,7 +27,7 @@ public class Student {
 
     private String sex;
 
-    private String age;
+    private Integer age;
 
     @Column(table = "t_student_info")
     private String birthDay;
