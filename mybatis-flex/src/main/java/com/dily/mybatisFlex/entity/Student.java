@@ -43,5 +43,9 @@ public class Student {
     @RelationManyToOne(selfField = "groupId", targetField = "id")
     private Group group;
     private Integer groupId;
+    @Column(ignore = true)
+    private Integer maxAge;
 
+    @Column(ignore = true)
+    private Integer avgAge;
 }
