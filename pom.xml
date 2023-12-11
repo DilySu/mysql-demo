@@ -16,5 +16,6 @@
         <module>mybatis-plus</module>
         <module>jpa</module>
         <module>mybatis-flex</module>
+        <module>mybatis-flex-more-datasource</module>
     </modules>
 </project>

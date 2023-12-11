@@ -1,0 +1,16 @@
+server:
+  port: 8888
+
+mybatis-flex:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  datasource:
+    master:
+      url: jdbc:mysql://localhost:3336/test?serverTimezone=UTC
+      username: root
+      password: 123456
+    slave01:
+      url: jdbc:mysql://localhost:3337/test?serverTimezone=UTC
+      username: root
+      password: 123456

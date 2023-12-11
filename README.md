@@ -35,3 +35,6 @@
 >   - 一对一： User & UserInfo
 >   - 一对多 & 多对一: Student <=> Group
 > - 动态查询
+## 八、mybatis-flex-more-datasource
+> - 多数据源
+> - 读写分离
